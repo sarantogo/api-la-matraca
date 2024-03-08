@@ -1,6 +1,5 @@
 package com.sarademo.apilamatraca.dtos;
 
-import com.sarademo.apilamatraca.entities.Cow;
 import com.sarademo.apilamatraca.entities.Purchase;
 
 import java.math.BigDecimal;
@@ -9,7 +8,7 @@ import java.sql.Date;
 public class PurchaseDto {
 
     private Long id;
-    private Cow cow;
+    private Long cowId;
     private String purchaseDate;
     private BigDecimal price;
     private String seller;
@@ -22,12 +21,10 @@ public class PurchaseDto {
         this.id = id;
     }
 
-    public Cow getCow() {
-        return cow;
-    }
+    public Long getCow() {return cowId;}
 
-    public void setCowId(Cow cow) {
-        this.cow = cow;
+    public void setCowId(Long cowId) {
+        this.cowId = cowId;
     }
 
     public String getPurchaseDate() {
@@ -54,14 +51,14 @@ public class PurchaseDto {
         this.seller = seller;
     }
 
-    public Purchase getPurchaseFromDto(){
-        Purchase purchase = new Purchase();
-        purchase.setSeller(seller);
-        purchase.setPrice(price);
-        purchase.setPurchaseDate(Date.valueOf(purchaseDate));
-
-        return purchase;
-    }
+//    public Purchase getPurchaseFromDto(){
+//        Purchase purchase = new Purchase();
+//        purchase.setSeller(seller);
+//        purchase.setPrice(price);
+//        purchase.setPurchaseDate(Date.valueOf(purchaseDate));
+//
+//        return purchase;
+//    }
 
 
 }

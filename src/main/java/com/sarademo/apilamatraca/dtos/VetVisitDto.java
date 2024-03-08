@@ -6,7 +6,7 @@ import java.time.LocalDate;
 public class VetVisitDto {
 
     private Long id;
-    private Integer cowId;
+    private Long cowId;
     private LocalDate visitDate;
     private BigDecimal price;
     private String vet;
@@ -19,11 +19,11 @@ public class VetVisitDto {
         this.id = id;
     }
 
-    public Integer getCowId() {
+    public Long getCowId() {
         return cowId;
     }
 
-    public void setCowId(Integer cowId) {
+    public void setCowId(Long cowId) {
         this.cowId = cowId;
     }
 

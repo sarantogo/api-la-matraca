@@ -1,13 +1,17 @@
 package com.sarademo.apilamatraca.dtos;
 
+import com.sarademo.apilamatraca.entities.Cow;
+import com.sarademo.apilamatraca.entities.Vaccine;
+
 import java.math.BigDecimal;
+import java.sql.Date;
 import java.time.LocalDate;
 
 public class VaccineDto {
 
     private Long id;
-    private Integer cowId;
-    private LocalDate vaccineDate;
+    private Cow cow;
+    private String vaccineDate;
     private BigDecimal price;
     private String name;
     private BigDecimal dose;
@@ -21,19 +25,19 @@ public class VaccineDto {
         this.id = id;
     }
 
-    public Integer getCowId() {
-        return cowId;
+    public Cow getCow() {
+        return cow;
     }
 
-    public void setCowId(Integer cowId) {
-        this.cowId = cowId;
+    public void setCowId(Cow cow) {
+        this.cow = cow;
     }
 
-    public LocalDate getVaccineDate() {
+    public String getVaccineDate() {
         return vaccineDate;
     }
 
-    public void setVaccineDate(LocalDate vaccineDate) {
+    public void setVaccineDate(String vaccineDate) {
         this.vaccineDate = vaccineDate;
     }
 
@@ -60,4 +64,16 @@ public class VaccineDto {
     public void setDose(BigDecimal dose) {
         this.dose = dose;
     }
+
+    public Vaccine getVaccineFromDto(){
+        Vaccine vaccine = new Vaccine();
+        vaccine.setVaccineDate(Date.valueOf(vaccineDate));
+        vaccine.setName(name);
+        vaccine.setDose(dose);
+        vaccine.setPrice(price);
+
+        return vaccine;
+    }
+
+
 }

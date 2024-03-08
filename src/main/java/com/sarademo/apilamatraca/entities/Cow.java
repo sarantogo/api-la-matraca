@@ -13,41 +13,29 @@ public class Cow {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     @Column
     private String name;
-
     @Column
     private Integer age;
-
     @Column
     private String breed;
-
     @Column(name = "was_bought")
     private boolean wasBought;
-
     @Column(name = "is_sold")
     private boolean isSold;
-
     @Column
     private BigDecimal weight;
-
     @Column(name = "created_at")
     private Date createdAt;
-
     @Column(name = "last_update")
     private Date lastUpdate;
-
-    @OneToOne(mappedBy = "cow")
+    @OneToOne(mappedBy = "cow", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Purchase purchase;
-
-    @OneToOne(mappedBy = "cow")
+    @OneToOne(mappedBy = "cow", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Sale sale;
-
-    @OneToMany(mappedBy = "cow")
+    @OneToMany(mappedBy = "cow", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Vaccine> vaccines;
-
-    @OneToMany(mappedBy = "cow")
+    @OneToMany(mappedBy = "cow", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<VetVisit> vetVisits;
 
     public Cow() {

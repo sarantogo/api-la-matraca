@@ -1,10 +1,15 @@
 package com.sarademo.apilamatraca.dtos;
 
+import com.sarademo.apilamatraca.entities.Cow;
 import com.sarademo.apilamatraca.entities.Purchase;
 import com.sarademo.apilamatraca.entities.Vaccine;
 
 import java.math.BigDecimal;
+import java.sql.Date;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class CreateCowDto {
 
@@ -14,11 +19,8 @@ public class CreateCowDto {
     private boolean wasBought;
     private boolean isSold;
     private BigDecimal weight;
-
-    private Purchase purchase;
-
-    private List<Vaccine> vaccineList;
-
+    private PurchaseDto purchase;
+    private List<VaccineDto> vaccineList;
 
     public String getName() {
         return name;
@@ -68,19 +70,36 @@ public class CreateCowDto {
         this.weight = weight;
     }
 
-    public Purchase getPurchase() {
+    public PurchaseDto getPurchase() {
         return purchase;
     }
 
-    public void setPurchase(Purchase purchase) {
+    public void setPurchase(PurchaseDto purchase) {
         this.purchase = purchase;
     }
 
-    public List<Vaccine> getVaccineList() {
+    public List<VaccineDto> getVaccineList() {
         return vaccineList;
     }
 
-    public void setVaccineList(List<Vaccine> vaccineList) {
+    public void setVaccineList(List<VaccineDto> vaccineList) {
         this.vaccineList = vaccineList;
+    }
+
+    public Cow getCowFromDto(){
+        Cow cow = new Cow();
+        cow.setName(name);
+        cow.setAge(age);
+        cow.setBreed(breed);
+        cow.setWasBought(wasBought);
+        cow.setSold(isSold);
+        cow.setWeight(weight);
+        cow.setCreatedAt(Date.valueOf(LocalDate.now()));
+        cow.setLastUpdate(Date.valueOf(LocalDate.now()));
+        cow.setPurchase(purchase.getPurchaseFromDto());
+        cow.setVaccines(vaccineList.stream().map(VaccineDto::getVaccineFromDto).collect(Collectors.toList()));
+
+        return cow;
+
     }
 }

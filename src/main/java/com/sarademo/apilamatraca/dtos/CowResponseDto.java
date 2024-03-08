@@ -1,17 +1,24 @@
 package com.sarademo.apilamatraca.dtos;
 
+import com.sarademo.apilamatraca.entities.Purchase;
+
 import java.math.BigDecimal;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public class CowResponseDto {
     private Long id;
+    private String name;
     private Integer age;
     private String breed;
     private BigDecimal weight;
-    private LocalDate purchaseDate;
-    private String vaccine;
-    private LocalDate vaccineDate;
+    private boolean wasBought;
+    private boolean isSold;
+    private SaleDto sale;
+    private PurchaseDto purchase;
+    private VaccineDto vaccine;
+    private VetVisitDto vetVisit;
 
     public Long getId() {
         return id;
@@ -19,6 +26,14 @@ public class CowResponseDto {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Integer getAge() {
@@ -45,27 +60,51 @@ public class CowResponseDto {
         this.weight = weight;
     }
 
-    public LocalDate getPurchaseDate() {
-        return purchaseDate;
+    public boolean isWasBought() {
+        return wasBought;
     }
 
-    public void setPurchaseDate(LocalDate purchaseDate) {
-        this.purchaseDate = purchaseDate;
+    public void setWasBought(boolean wasBought) {
+        this.wasBought = wasBought;
     }
 
-    public String getVaccine() {
+    public boolean isSold() {
+        return isSold;
+    }
+
+    public void setSold(boolean sold) {
+        isSold = sold;
+    }
+
+    public SaleDto getSale() {
+        return sale;
+    }
+
+    public void setSale(SaleDto sale) {
+        this.sale = sale;
+    }
+
+    public PurchaseDto getPurchase() {
+        return purchase;
+    }
+
+    public void setPurchase(PurchaseDto purchase) {
+        this.purchase = purchase;
+    }
+
+    public VaccineDto getVaccine() {
         return vaccine;
     }
 
-    public void setVaccine(String vaccine) {
+    public void setVaccine(VaccineDto vaccine) {
         this.vaccine = vaccine;
     }
 
-    public LocalDate getVaccineDate() {
-        return vaccineDate;
+    public VetVisitDto getVetVisit() {
+        return vetVisit;
     }
 
-    public void setVaccineDate(LocalDate vaccineDate) {
-        this.vaccineDate = vaccineDate;
+    public void setVetVisit(VetVisitDto vetVisit) {
+        this.vetVisit = vetVisit;
     }
 }

@@ -8,8 +8,9 @@ import java.util.List;
 
 public interface CowService {
 
-    Cow saveNewCow(CreateCowDto cow);
-//    List<CowResponseDto> getAllCows();
+    Long saveNewCow(CreateCowDto cow);
+    List<CowResponseDto> getAllCows();
+
 //    CowResponseDto getCowById(Long id);
 //    Cow updateCow(CowResponseDto cow);
 //    void deleteCow(CowResponseDto cow);

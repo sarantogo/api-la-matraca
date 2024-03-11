@@ -21,7 +21,7 @@ public class PurchaseDto {
         this.id = id;
     }
 
-    public Long getCow() {return cowId;}
+    public Long getCowId() {return cowId;}
 
     public void setCowId(Long cowId) {
         this.cowId = cowId;

@@ -24,7 +24,7 @@ public class VaccineDto {
         this.id = id;
     }
 
-    public Long getCow() {
+    public Long getCowId() {
         return cowId;
     }
 

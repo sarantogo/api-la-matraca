@@ -1,13 +1,14 @@
 package com.sarademo.apilamatraca.dtos;
 
 import java.math.BigDecimal;
+import java.sql.Date;
 import java.time.LocalDate;
 
 public class SaleDto {
 
     private Long id;
-    private Integer cowId;
-    private LocalDate saleDate;
+    private Long cowId;
+    private String saleDate;
     private BigDecimal price;
     private String buyer;
 
@@ -19,19 +20,19 @@ public class SaleDto {
         this.id = id;
     }
 
-    public Integer getCowId() {
+    public Long getCowId() {
         return cowId;
     }
 
-    public void setCowId(Integer cowId) {
+    public void setCowId(Long cowId) {
         this.cowId = cowId;
     }
 
-    public LocalDate getSaleDate() {
+    public String getSaleDate() {
         return saleDate;
     }
 
-    public void setSaleDate(LocalDate saleDate) {
+    public void setSaleDate(String saleDate) {
         this.saleDate = saleDate;
     }
 

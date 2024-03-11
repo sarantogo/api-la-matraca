@@ -20,6 +20,9 @@ public class CowResponseDto {
     private VaccineDto vaccine;
     private VetVisitDto vetVisit;
 
+    public CowResponseDto() {
+    }
+
     public Long getId() {
         return id;
     }

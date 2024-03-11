@@ -7,7 +7,7 @@ public class VetVisitDto {
 
     private Long id;
     private Long cowId;
-    private LocalDate visitDate;
+    private String visitDate;
     private BigDecimal price;
     private String vet;
 
@@ -27,11 +27,11 @@ public class VetVisitDto {
         this.cowId = cowId;
     }
 
-    public LocalDate getVisitDate() {
+    public String getVisitDate() {
         return visitDate;
     }
 
-    public void setVisitDate(LocalDate visitDate) {
+    public void setVisitDate(String visitDate) {
         this.visitDate = visitDate;
     }
 

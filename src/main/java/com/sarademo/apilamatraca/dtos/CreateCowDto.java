@@ -86,20 +86,4 @@ public class CreateCowDto {
         this.vaccineList = vaccineList;
     }
 
-//    public Cow getCowFromDto(){
-//        Cow cow = new Cow();
-//        cow.setName(name);
-//        cow.setAge(age);
-//        cow.setBreed(breed);
-//        cow.setWasBought(wasBought);
-//        cow.setSold(isSold);
-//        cow.setWeight(weight);
-//        cow.setCreatedAt(Date.valueOf(LocalDate.now()));
-//        cow.setLastUpdate(Date.valueOf(LocalDate.now()));
-//        cow.setPurchase(purchase.getPurchaseFromDto());
-//        cow.setVaccines(vaccineList.stream().map(VaccineDto::getVaccineFromDto).collect(Collectors.toList()));
-//
-//        return cow;
-//
-//    }
 }

@@ -18,8 +18,6 @@ public class Role {
     @Column
     private String description;
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    private List<User> users;
 
     public Role() {
     }
@@ -48,11 +46,4 @@ public class Role {
         this.description = description;
     }
 
-    public List<User> getUsers() {
-        return users;
-    }
-
-    public void setUsers(List<User> users) {
-        this.users = users;
-    }
 }

@@ -7,6 +7,7 @@ import com.sarademo.apilamatraca.services.CowService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,7 +18,7 @@ public class CowController {
 
     @Autowired
     CowService cowService;
-
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/create")
     public ResponseEntity<Long> saveNewCow(@RequestBody CreateCowDto cowDto){
         return ResponseEntity.status(HttpStatus.OK).body(cowService.saveNewCow(cowDto));
@@ -27,6 +28,9 @@ public class CowController {
     public ResponseEntity<List<CowResponseDto>> getAllCows(){
         return ResponseEntity.status(HttpStatus.OK).body(cowService.getAllCows());
     }
+
+    @PostMapping("/newSale")
+
 
     @GetMapping("/test")
     public String testController(){

@@ -11,6 +11,9 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Named;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 @Mapper(componentModel = "spring")
@@ -33,8 +36,12 @@ public abstract class CowResponseMapper {
     @Named("cowToCowResponseDto")
     public CowResponseDto cowToCowResponseDto(Cow cow){
         CowResponseDto dto = new CowResponseDto();
+
         List<Vaccine> vaccines = cow.getVaccines();
+        vaccines.sort(Comparator.comparing(Vaccine::getVaccineDate));
+
         List<VetVisit> visits = cow.getVetVisits();
+        visits.sort(Comparator.comparing(VetVisit::getVisitDate));
 
         if(!vaccines.isEmpty()){
             VaccineDto vaccineDto = vaccineMapper.vaccineToVaccineDto(vaccines.get(vaccines.size()-1));

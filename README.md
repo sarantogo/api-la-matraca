@@ -2,6 +2,5 @@
     - Encrypted passwords
     - JWT 
     - Roles
-- Swagger Documentation
 - Exception Handling
 - Design Patterns

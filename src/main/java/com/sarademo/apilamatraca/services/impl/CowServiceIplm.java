@@ -39,9 +39,7 @@ public class CowServiceIplm implements CowService {
 
     public List<CowResponseDto> getAllCows(){
         List<Cow> cows = cowRepository.findAll();
-        List<CowResponseDto> cowsList = cowResponseMapper.cowsListToCowsResponseDtos(cows);
-
-        return cowsList;
+        return cowResponseMapper.cowsListToCowsResponseDtos(cows);
     }
 
 }

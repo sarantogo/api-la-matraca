@@ -19,7 +19,7 @@ import java.util.stream.Collectors;
 public abstract class VaccineMapper {
 
     @Mapping(target = "vaccineDate", source = "vaccineDate", qualifiedByName = "stringToDate")
-    @Mapping(target = "cow", source = "cowId", ignore = true)
+//    @Mapping(target = "cow", source = "cowId", ignore = true)
     public abstract Vaccine vaccineDtoToVaccine(VaccineDto dto);
 
     @Named("stringToDate")
@@ -28,6 +28,6 @@ public abstract class VaccineMapper {
     }
 
     @Mapping(target = "cowId", source = "cow.id")
-    @Mapping(target = "vaccineDate", source = "vaccineDate", dateFormat = "yyyy-MM-dd")
+    @Mapping(target = "vaccineDate", source = "vaccineDate", dateFormat = "dd-MM-yyyy")
     public abstract VaccineDto vaccineToVaccineDto(Vaccine vaccine);
 }

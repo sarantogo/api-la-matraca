@@ -30,7 +30,7 @@ public abstract class SaleMapper {
     }
 
     @Mapping(target = "cowId", source = "cow.id")
-    @Mapping(target = "saleDate", source = "saleDate", dateFormat = "yyyy-MM-dd")
+    @Mapping(target = "saleDate", source = "saleDate", dateFormat = "dd-MM-yyyy")
     public abstract SaleDto saleToSaleDto(Sale sale);
 
 }

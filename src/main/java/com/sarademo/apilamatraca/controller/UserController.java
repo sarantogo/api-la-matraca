@@ -46,6 +46,6 @@ public class UserController {
 
     @PostMapping("/register")
     public ResponseEntity<Long> saveUser(@RequestBody UserDto user) throws UsernameAlreadyExistsException {
-        return ResponseEntity.status(HttpStatus.OK).body(userService.save(user));
+        return ResponseEntity.status(HttpStatus.CREATED).body(userService.save(user));
     }
 }

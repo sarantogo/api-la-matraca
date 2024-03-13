@@ -32,7 +32,7 @@ public abstract class VetVisitMapper {
     }
 
     @Mapping(target = "cowId", source = "cow.id")
-    @Mapping(target = "visitDate", source = "visitDate", dateFormat = "yyyy-MM-dd")
+    @Mapping(target = "visitDate", source = "visitDate", dateFormat = "dd-MM-yyyy")
     public abstract VetVisitDto visitToVisitDto(VetVisit visit);
 
 }

@@ -5,6 +5,7 @@ import com.sarademo.apilamatraca.dtos.CowResponseDto;
 import com.sarademo.apilamatraca.dtos.CreateCowDto;
 import com.sarademo.apilamatraca.entities.Cow;
 import com.sarademo.apilamatraca.services.CowService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,20 +25,20 @@ public class CowController {
     CowService cowService;
     @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/create")
-    public ResponseEntity<ControllerResponse> saveNewCow(@RequestBody CreateCowDto cowDto){
+    public ResponseEntity<ControllerResponse> saveNewCow(@Valid @RequestBody CreateCowDto cowDto){
         Long newCowId = cowService.saveNewCow(cowDto);
         Map<String, Object> data = new HashMap<>();
-        data.put("data", newCowId);
+        data.put("newCowId", newCowId);
 
-        ControllerResponse controllerResponse = new ControllerResponse(HttpStatus.OK.value(), data, LocalDateTime.now());
-        return ResponseEntity.status(HttpStatus.OK).body(controllerResponse);
+        ControllerResponse controllerResponse = new ControllerResponse(HttpStatus.CREATED.value(), data, LocalDateTime.now());
+        return ResponseEntity.status(HttpStatus.CREATED).body(controllerResponse);
     }
 
     @GetMapping("/getAll")
     public ResponseEntity<ControllerResponse> getAllCows(){
         List<CowResponseDto> cows = cowService.getAllCows();
         Map<String, Object> data = new HashMap<>();
-        data.put("data", cows);
+        data.put("listOfCows", cows);
 
         ControllerResponse controllerResponse = new ControllerResponse(HttpStatus.OK.value(), data, LocalDateTime.now());
         return ResponseEntity.status(HttpStatus.OK).body(controllerResponse);

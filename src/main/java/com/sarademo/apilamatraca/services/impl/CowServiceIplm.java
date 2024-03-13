@@ -11,6 +11,7 @@ import com.sarademo.apilamatraca.repositories.CowRepository;
 import com.sarademo.apilamatraca.services.CowService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 
 import java.sql.Date;
 import java.time.LocalDate;
@@ -29,6 +30,21 @@ public class CowServiceIplm implements CowService {
     CowResponseMapper cowResponseMapper;
 
     public Long saveNewCow(CreateCowDto cowDto){
+
+        if(cowDto.isWasBought() && cowDto.getPurchase() == null){
+            throw new IllegalArgumentException("wasBought is set to true, please enter a purchase");
+        }
+        if(cowDto.getPurchase().getPurchaseDate() == null || cowDto.getPurchase().getPurchaseDate().isEmpty()){
+            throw new IllegalArgumentException("Purchase Date is required");
+        }
+        if(cowDto.getPurchase().getPrice() == null){
+            throw new IllegalArgumentException("Purchase price is required");
+        }
+        if(cowDto.getPurchase().getSeller() != null){
+            if(cowDto.getPurchase().getSeller().length() <2 ){
+                throw new IllegalArgumentException("Seller name should have at least 2 characters");
+            }
+        }
 
         Cow cow = cowMapper.createDtoToCow(cowDto);
         cow.setCreatedAt(Date.valueOf(LocalDate.now()));

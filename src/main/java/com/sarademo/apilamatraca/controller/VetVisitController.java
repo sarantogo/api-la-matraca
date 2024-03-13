@@ -3,6 +3,7 @@ package com.sarademo.apilamatraca.controller;
 import com.sarademo.apilamatraca.dtos.ControllerResponse;
 import com.sarademo.apilamatraca.dtos.VetVisitDto;
 import com.sarademo.apilamatraca.services.VetVisitService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,10 +26,10 @@ public class VetVisitController {
 
     @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/create")
-    public ResponseEntity<ControllerResponse> saveNewVisit(@RequestBody VetVisitDto dto){
+    public ResponseEntity<ControllerResponse> saveNewVisit(@Valid @RequestBody VetVisitDto dto){
         Long newVisitId = visitService.saveNewVisit(dto);
         Map<String, Object> data = new HashMap<>();
-        data.put("data", newVisitId);
+        data.put("newVisitId", newVisitId);
 
         ControllerResponse controllerResponse = new ControllerResponse(HttpStatus.OK.value(), data, LocalDateTime.now());
         return ResponseEntity.status(HttpStatus.OK).body(controllerResponse);

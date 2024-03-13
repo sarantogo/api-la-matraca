@@ -17,7 +17,7 @@ import java.time.format.DateTimeFormatter;
 public abstract class PurchaseMapper {
 
     @Mapping(target = "purchaseDate", source = "purchaseDate", qualifiedByName = "stringToDate")
-    @Mapping(target = "cow", source = "cowId", ignore = true)
+//    @Mapping(target = "cow", source = "cowId", ignore = true)
     public abstract Purchase purchaseDtoToPurchase(PurchaseDto dto);
 
     @Named("stringToDate")
@@ -26,6 +26,6 @@ public abstract class PurchaseMapper {
     }
 
     @Mapping(target = "cowId", source = "cow.id")
-    @Mapping(target = "purchaseDate", source = "purchaseDate", dateFormat = "yyyy-MM-dd")
+    @Mapping(target = "purchaseDate", source = "purchaseDate", dateFormat = "dd-MM-yyyy")
     public abstract PurchaseDto purchaseToPurchaseDto(Purchase purchase);
 }

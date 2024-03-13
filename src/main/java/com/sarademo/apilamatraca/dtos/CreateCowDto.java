@@ -1,22 +1,29 @@
 package com.sarademo.apilamatraca.dtos;
 
-import com.sarademo.apilamatraca.entities.Cow;
-import com.sarademo.apilamatraca.entities.Purchase;
-import com.sarademo.apilamatraca.entities.Vaccine;
+
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.Size;
 
 import java.math.BigDecimal;
-import java.sql.Date;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
+
 import java.util.List;
-import java.util.stream.Collectors;
+
 
 public class CreateCowDto {
 
+    @NotEmpty(message = "Name is required")
+    @Size(min = 2, message = "Name should have at least 2 characters")
     private String name;
+    @NotNull(message = "Age is required")
+    @Positive(message = "Age should be a positive number")
     private Integer age;
+    @NotEmpty(message = "Breed is required")
     private String breed;
+    @NotNull(message = "Please specify if was bought or not")
     private boolean wasBought;
+    @NotNull(message = "Please specify if has been sold or not")
     private boolean isSold;
     private BigDecimal weight;
     private PurchaseDto purchase;

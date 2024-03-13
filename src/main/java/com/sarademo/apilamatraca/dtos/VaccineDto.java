@@ -1,6 +1,8 @@
 package com.sarademo.apilamatraca.dtos;
 
 import com.sarademo.apilamatraca.entities.Vaccine;
+import jakarta.validation.constraints.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.math.BigDecimal;
 import java.sql.Date;
@@ -10,9 +12,14 @@ public class VaccineDto {
 
     private Long id;
     private Long cowId;
+    @NotEmpty(message = "Vaccine Date is required")
     private String vaccineDate;
+    @PositiveOrZero(message = "Price should be a positive number or zero")
     private BigDecimal price;
+    @NotEmpty(message = "Name is required")
+    @Size(min = 2, message = "Name should have at least 2 characters")
     private String name;
+    @Positive(message = "Dose should be a positive number")
     private BigDecimal dose;
 
 

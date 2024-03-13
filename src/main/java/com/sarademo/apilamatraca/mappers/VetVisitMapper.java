@@ -19,7 +19,7 @@ public abstract class VetVisitMapper {
     CowRepository cowRepository;
 
     public VetVisit visitDtoToVisit(VetVisitDto dto){
-        Cow cow = cowRepository.findById(dto.getCowId()).orElse(null);
+        Cow cow = cowRepository.findById(dto.getCowId()).orElseThrow();
 
         VetVisit visit = new VetVisit();
 

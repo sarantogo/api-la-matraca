@@ -15,7 +15,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-
+//This is an example of Template design pattern
 @Mapper(componentModel = "spring")
 public abstract class CowResponseMapper {
 

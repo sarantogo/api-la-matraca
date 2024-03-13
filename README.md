@@ -1,29 +1,29 @@
 # API La Matraca
 
-Es un sistema diseñado para gestionar la finca ganadera "La Matraca". Específicamente, el control de vacunas, visitas de veterinario, compra y venta de las vacas.
+It is a system designed to manage the "La Matraca" livestock farm. Specifically, the control of vaccines, veterinary visits, buying and selling of cows.
 
-### Modelo Entidad - Relación
+### Entity - Relation Model
 
-Para la base de datos se utilizó una BD relacional con MariaDB como motor de gestión:
+For the database, a relational DB was used with MariaDB as the management engine:
 
 ![Entity-RelationDiagram](/Users/sarantogo/Downloads/Entity-RelationDiagram.png)
 
-### Arquitectura
+### Architecture
 
-Se definió una arquitectura por capas:
-1. Capa de Persistencia: Repositorios.
-2. Capa de Dominio: Entidades
-3. Capa de Aplicación/Negocio: Servicios y controladores.
+A layered architecture was defined:
+1. Persistence Layer: Repositories.
+2. Domain Layer: Entities
+3. Application / Business Layer: Services and controllers.
 
-El proyecto está organizado en módulos/paquetes funcionales (las clases se encuentran agrupadas según su caso de uso o funcionalidad):
+The project is organized into functional modules/packages (classes are grouped according to their use case or functionality):
 
 ![Structure](/Users/sarantogo/Downloads/Structure.png
 )
-### Especificaciones Técnicas
+### Technical specifications
 
-El proyecto está desarrollado con Java JDK versión 21.0.2, usando Spring Boot como marco de trabajo. 
+The project is developed with Java JDK version 21.0.2, using Spring Boot framework and Maven as the dependency manager.
 
-Las dependencias necesarias para ejecutar el proyecto son las siguientes (pom.xml):
+The dependencies required to run the project are as follows (pom.xml):
 
 - Spring Web
 - Spring Data JPA
@@ -31,7 +31,7 @@ Las dependencias necesarias para ejecutar el proyecto son las siguientes (pom.xm
 - Spring Security
 - Spring Boot Validation
 - MariaDB Driver
-- MapStruct para mapear los DTO a Entidades:
+- MapStruct to map DTOs and Entities:
 ```
 <dependency>
 	<groupId>org.mapstruct</groupId>
@@ -39,7 +39,7 @@ Las dependencias necesarias para ejecutar el proyecto son las siguientes (pom.xm
 	<version>1.5.5.Final</version>
 </dependency>
 ```
-- Json Web Token para la autenticación:
+- Json Web Token for authentication:
 ```
 <dependency>
 	<groupId>io.jsonwebtoken</groupId>
@@ -60,13 +60,13 @@ Las dependencias necesarias para ejecutar el proyecto son las siguientes (pom.xm
 </dependency>
 ```
 
-### Seguridad:
+### Security:
 
-- Contraseñas encriptadas (BCryptPasswordEncoder)
+- Encrypted passwords (BCryptPasswordEncoder)
 - Json Web Token
 - Roles
 
-### Patrones de Diseño
+### Design Patterns
 - Singleton
 - Template
 - Chain of Responsability
